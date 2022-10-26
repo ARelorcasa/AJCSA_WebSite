@@ -1,0 +1,41 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<!--p-20 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 xl:grid-cols-3 p-5-->
+<div class="grid xl:grid-cols-6 sm:grid-cols-1 gap-4 md:grid-cols-1" >
+    <div class = "rounded shadow-md p-5 row-span-3">
+        <div>
+            <img class = "w-40 h-40 mb-4" src="{{user.profile.image.url}}" alt=""> 
+        </div>
+        <div class="text-gray-500 font-bold text-xl px-2 py-4">
+            {{user.first_name}}  {{user.last_name}}
+        </div>
+
+        <div class="text-gray-500 font-semibold text-xl">
+            📞{{user.profile.contact_number}}
+        </div>
+    </div>
+    
+    <div class = "rounded shadow-md xl:col-span-5 grid xl:grid-cols-3 md:grid-cols-2">
+        {% for product in products %}
+            <div class = "rounded shadow-md p-10 ">
+                <span class="p-5">
+                    <img class=" w-40 h-40 "src="{{product.image.url}}">
+                </span>
+
+                <span class="p-5">
+                    <div class="font-semibold text-gray-500">{{product.Brand}}</div>
+                    <div class=" text-green-500">Price: PHP{{product.SRP}}</div>
+                    <div class="text-gray-500">Category: {{product.Name}}</div>
+                </span>
+
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock %}
